@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Termina tu Secundaria o Preparatoria en meses. 100% virtual, sin exámenes, con validez oficial SEP. CEVM - Centro de Estudios Virtuales">
+    <title>CEVM - Termina tu Preparatoria en Meses, No en Años | Validez SEP</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0F172A;
+            --secondary-blue: #1E293B;
+            --accent-green: #10B981;
+            --accent-teal: #14B8A6;
+            --text-dark: #1F2937;
+            --text-gray: #6B7280;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 25px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navbar/Header */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 999;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar.visible {
+            transform: translateY(0);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .navbar-logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .navbar-logo-text {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .navbar-cta {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F0F4F8 30%, #0F172A 70%, #1E3A8A 100%);
+            overflow: hidden;
+            padding: 2rem;
+            padding-top: 5rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-logo {
+            width: 320px;
+            max-width: 90%;
+            height: auto;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s ease 0.1s backwards;
+            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #10B981, #14B8A6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #10B981, #14B8A6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease 0.8s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Pain Section */
+        .pain-section {
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pain-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #E5E7EB;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pain-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pain-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .pain-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%);
+            border-radius: 20px;
+            border: 2px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #10B981, #14B8A6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.9375rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid #E5E7EB;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #10B981, #14B8A6);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-green);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent-green);
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: var(--white);
+            padding: 0.5rem 3rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-duration {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .pricing-note {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        /* Authority Section */
+        .authority-section {
+            background: linear-gradient(135deg, #0F172A, #1E3A8A);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .authority-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .authority-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .authority-badge {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 3px solid rgba(16, 185, 129, 0.5);
+        }
+
+        .authority-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .authority-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+
+        .authority-list {
+            list-style: none;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .authority-list li {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background: var(--white);
+            border-radius: 12px;
+            border: 2px solid #E5E7EB;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-green);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-green);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            color: var(--accent-green);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem 2rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #10B981 100%);
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+        }
+
+        .final-cta-button {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: var(--white);
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .final-cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Location Section */
+        .location-section {
+            background: var(--bg-light);
+            padding: 4rem 0;
+        }
+
+        .location-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-address {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+            }
+            50% {
+                box-shadow: 0 6px 40px rgba(37, 211, 102, 0.8);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 90vh;
+                padding: 1.5rem 1rem;
+                padding-top: 4rem;
+            }
+
+            .hero-logo {
+                width: 260px;
+                margin-bottom: 2rem;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 0.4rem 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 1.25rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .cta-button {
+                width: 100%;
+                padding: 1.125rem 2rem;
+                font-size: 1rem;
+            }
+
+            .navbar-logo img {
+                height: 38px;
+            }
+
+            .navbar-logo-text {
+                font-size: 1rem;
+            }
+
+            .navbar-cta {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.875rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 1.875rem;
+                margin-bottom: 0.875rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 3rem;
+                padding: 0 1rem;
+            }
+
+            .features-grid,
+            .pain-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .feature-card,
+            .pain-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .pricing-card {
+                padding: 2.5rem 1.75rem;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
+            .pricing-price {
+                font-size: 2.5rem;
+            }
+
+            .authority-badge {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .authority-title {
+                font-size: 1.875rem;
+            }
+
+            .authority-text {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .authority-list {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .faq-container {
+                padding: 0 1rem;
+            }
+
+            .faq-question {
+                padding: 1.25rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .faq-answer-content {
+                padding: 0 1.5rem 1.25rem 1.5rem;
+                font-size: 0.9375rem;
+            }
+
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .final-cta {
+                padding: 5rem 1.5rem;
+            }
+
+            .final-cta h2 {
+                font-size: 2rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .final-cta p {
+                font-size: 1.125rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .final-cta-button {
+                width: 100%;
+                padding: 1.25rem 2rem;
+                font-size: 1.125rem;
+            }
+
+            .location-address {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            footer p {
+                font-size: 0.8125rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1.25rem 0.875rem;
+                padding-top: 3.5rem;
+            }
+
+            .hero-logo {
+                width: 220px;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .navbar-content {
+                padding: 0 1rem;
+            }
+
+            .navbar-logo-text {
+                display: none;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-price {
+                font-size: 2.25rem;
+            }
+
+            .faq-question {
+                padding: 1rem 1.25rem;
+                font-size: 0.9375rem;
+            }
+
+            .faq-answer-content {
+                padding: 0 1.25rem 1rem 1.25rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Tablet landscape */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+
+            .features-grid,
+            .pain-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .authority-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .cta-button,
+            .navbar-cta,
+            .pricing-cta,
+            .final-cta-button,
+            .whatsapp-float {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .faq-question {
+                min-height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar/Header Fixed -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-logo">
+                <img src="logo-cevm.png" alt="CEVM Logo">
+                <span class="navbar-logo-text">CEVM</span>
+            </div>
+            <a href="https://wa.me/523343347412?text=Hola,%20quiero%20información%20sobre%20CEVM" class="navbar-cta" target="_blank" rel="noopener">
+                WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="logo-cevm.png" alt="CEVM - Centro de Estudios Virtuales" class="hero-logo">
+            <div class="hero-badge">✨ Validez Oficial SEP</div>
+            <h1>Termina tu Secundaria o Preparatoria en <span class="hero-highlight">Meses, No en Años</span></h1>
+            <p>Sin exámenes. 100% virtual. Estudia a tu ritmo, desde donde estés, cuando quieras.</p>
+            <a href="https://wa.me/523343347412?text=Hola,%20quiero%20información%20sobre%20la%20secundaria%20y%20preparatoria%20virtual" class="cta-button" target="_blank">
+                QUIERO INFORMACIÓN POR WHATSAPP
+            </a>
+        </div>
+    </section>
+
+    <!-- Pain Section -->
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-title">¿Te Identificas con Esto?</h2>
+            <p class="section-subtitle">Miles de personas enfrentan estas situaciones cada día. Tú no tienes que ser una más.</p>
+            
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-icon">😔</div>
+                    <h3>No Tienes Certificado</h3>
+                    <p>Las mejores oportunidades laborales piden mínimo preparatoria. Sin ella, las puertas se cierran.</p>
+                </div>
+                
+                <div class="pain-card">
+                    <div class="pain-icon">⏰</div>
+                    <h3>No Tienes Tiempo</h3>
+                    <p>Trabajas, tienes familia, responsabilidades. No puedes asistir a clases presenciales con horarios rígidos.</p>
+                </div>
+                
+                <div class="pain-card">
+                    <div class="pain-icon">💼</div>
+                    <h3>Salario Limitado</h3>
+                    <p>Sin estudios, tus ingresos están limitados. Quieres más para ti y tu familia, pero no sabes cómo empezar.</p>
+                </div>
+                
+                <div class="pain-card">
+                    <div class="pain-icon">😓</div>
+                    <h3>Frustración Constante</h3>
+                    <p>Has intentado regresar a estudiar varias veces, pero los horarios, exámenes y sistemas tradicionales te frenan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <h2 class="section-title">La Solución Está Aquí</h2>
+            <p class="section-subtitle">CEVM es el centro educativo diseñado para personas como tú: con metas, pero sin tiempo para sistemas tradicionales.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Plataforma 24/7</h3>
+                    <p>Estudia a la hora que quieras, los 365 días del año. Tú decides cuándo avanzar.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Desde Cualquier Dispositivo</h3>
+                    <p>Celular, tablet o computadora. No necesitas descargar nada, todo en línea.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚫</div>
+                    <h3>Sin Exámenes</h3>
+                    <p>Nada de exámenes estresantes ni examen final. Aprendes evaluando tu progreso.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Validez Oficial SEP</h3>
+                    <p>Acuerdos 445 y 286. Tu certificado es 100% válido en todo México.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Continúa en Universidad</h3>
+                    <p>Accede a cualquier universidad pública o privada del país con tu certificado.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Sin Horarios Forzosos</h3>
+                    <p>No hay clases en vivo obligatorias. Estudia a tu ritmo, sin presiones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Planes Diseñados Para Ti</h2>
+            <p class="section-subtitle">Elige el plan que mejor se adapte a tu ritmo de vida y objetivos.</p>
+            
+            <div class="pricing-grid">
+                <!-- Plan 6 meses -->
+                <div class="pricing-card">
+                    <div class="pricing-duration">Plan 6 Meses</div>
+                    <div class="pricing-price">$1,000</div>
+                    <div class="pricing-period">mensuales</div>
+                    
+                    <ul class="pricing-features">
+                        <li>Plataforma 24/7 disponible</li>
+                        <li>Estudia desde cualquier dispositivo</li>
+                        <li>Sin exámenes ni examen final</li>
+                        <li>Validez oficial SEP</li>
+                        <li>Soporte académico incluido</li>
+                        <li>Acceso a todos los materiales</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/523343347412?text=Hola,%20quiero%20inscribirme%20al%20Plan%20de%206%20meses%20($1,000%20mensuales)" class="pricing-cta" target="_blank">
+                        INSCRIBIRME POR WHATSAPP
+                    </a>
+                    
+                    <div class="pricing-note">
+                        <strong>Costos adicionales:</strong><br>
+                        Inscripción: $400<br>
+                        Certificación: $4,750
+                    </div>
+                </div>
+                
+                <!-- Plan 3 meses (Popular) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Más Popular</div>
+                    <div class="pricing-duration">Plan 3 Meses</div>
+                    <div class="pricing-price">$2,000</div>
+                    <div class="pricing-period">mensuales</div>
+                    
+                    <ul class="pricing-features">
+                        <li>Plataforma 24/7 disponible</li>
+                        <li>Estudia desde cualquier dispositivo</li>
+                        <li>Sin exámenes ni examen final</li>
+                        <li>Validez oficial SEP</li>
+                        <li>Soporte académico prioritario</li>
+                        <li>Termina más rápido</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/523343347412?text=Hola,%20quiero%20inscribirme%20al%20Plan%20de%203%20meses%20($2,000%20mensuales)" class="pricing-cta" target="_blank">
+                        INSCRIBIRME POR WHATSAPP
+                    </a>
+                    
+                    <div class="pricing-note">
+                        <strong>Costos adicionales:</strong><br>
+                        Inscripción: $400<br>
+                        Certificación: $4,750
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority Section -->
+    <section class="authority-section">
+        <div class="container">
+            <div class="authority-content">
+                <div class="authority-badge">
+                    <img src="logo-cevm.png" alt="CEVM Logo" style="width: 80px; height: auto; filter: brightness(0) invert(1);">
+                </div>
+                <h2 class="authority-title">Validez Oficial Garantizada</h2>
+                <p class="authority-text">
+                    CEVM está registrado ante la Secretaría de Educación Pública (SEP) con los acuerdos oficiales 445 y 286, 
+                    lo que garantiza que tu certificado es 100% válido en todo México.
+                </p>
+                
+                <ul class="authority-list">
+                    <li><strong>📜 Acuerdos SEP 445 y 286</strong><br>Validez oficial en todo el país</li>
+                    <li><strong>🎓 Aceptación Universitaria</strong><br>Continúa en cualquier universidad</li>
+                    <li><strong>💼 Reconocimiento Laboral</strong><br>Válido para empleos públicos y privados</li>
+                </ul>
+                
+                <a href="https://wa.me/523343347412?text=Quiero%20saber%20más%20sobre%20la%20validez%20oficial%20SEP" class="cta-button" target="_blank" style="margin-top: 2rem;">
+                    VERIFICAR VALIDEZ OFICIAL
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <p class="section-subtitle">Resolvemos todas tus dudas antes de que tomes la mejor decisión de tu vida.</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Es realmente oficial? ¿Me van a aceptar en universidades?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sí, 100% oficial. CEVM cuenta con validez oficial SEP bajo los acuerdos 445 y 286. 
+                            Tu certificado es exactamente igual al de cualquier preparatoria tradicional y es aceptado 
+                            en todas las universidades públicas y privadas de México.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Puedo estudiar desde mi celular?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            ¡Por supuesto! La plataforma está optimizada para funcionar en celular, tablet o computadora. 
+                            No necesitas descargar ninguna aplicación, todo funciona desde tu navegador web.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Realmente no hay exámenes?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Correcto. No hay exámenes tradicionales ni examen final. El sistema evalúa tu progreso 
+                            de manera continua mientras avanzas en la plataforma, sin el estrés de los exámenes.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Puedo trabajar y estudiar al mismo tiempo?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            ¡Exactamente para eso fue diseñado! La plataforma está disponible 24/7, 
+                            así que puedes estudiar cuando tengas tiempo: en la noche, madrugada, fines de semana, 
+                            en tu descanso del trabajo. Tú decides cuándo avanzar.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Qué edad necesito para inscribirme?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Para secundaria virtual: desde los 15 años en adelante.<br>
+                            Para preparatoria virtual: desde los 18 años en adelante.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Qué incluye el costo de certificación?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            El costo de certificación de $4,750 incluye todos los trámites oficiales ante la SEP, 
+                            expedición de tu certificado oficial, historial académico y el documento con validez oficial 
+                            que podrás presentar en universidades o empleos.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-content">
+            <h2>Tu Futuro No Puede Esperar</h2>
+            <p>Miles de personas ya cambiaron su vida. Hoy es tu turno.</p>
+            <a href="https://wa.me/523343347412?text=Hola,%20estoy%20listo%20para%20inscribirme%20a%20CEVM" class="final-cta-button" target="_blank">
+                ESCRIBIR AHORA POR WHATSAPP
+            </a>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+        <div class="container">
+            <div class="location-content">
+                <div class="location-icon">📍</div>
+                <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Nuestra Ubicación</h3>
+                <p class="location-address">
+                    <strong>CEVM - Centro de Estudios Virtuales</strong><br>
+                    Av. Sierra de Tapalpa #5720<br>
+                    Col. Pinar de la Calma<br>
+                    Zapopan, Jalisco
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+                <img src="logo-cevm.png" alt="CEVM Logo" style="height: 50px; width: auto; filter: brightness(0) invert(1);">
+                <div style="text-align: left;">
+                    <div style="font-weight: 700; font-size: 1.125rem; margin-bottom: 0.25rem;">CEVM</div>
+                    <div style="font-size: 0.75rem; opacity: 0.8;">Centro de Estudios Virtuales</div>
+                </div>
+            </div>
+            <p>&copy; 2026 CEVM - Centro de Estudios Virtuales Básico y Media Superior. Todos los derechos reservados.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem;">Validez Oficial SEP - Acuerdos 445 y 286</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/523343347412?text=Hola,%20necesito%20información%20sobre%20CEVM" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-5.252 1.408 1.408-5.248-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.957 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62-6.11 13.62-13.62 13.62zM21.305 19.26c-0.346-0.174-2.049-1.007-2.366-1.123-0.316-0.117-0.547-0.174-0.776 0.174s-0.892 1.123-1.094 1.347c-0.201 0.231-0.401 0.26-0.747 0.087-0.346-0.174-1.461-0.539-2.785-1.722-1.030-0.922-1.726-2.059-1.927-2.405s-0.022-0.534 0.152-0.707c0.156-0.156 0.346-0.405 0.518-0.608 0.174-0.201 0.231-0.346 0.346-0.577 0.116-0.231 0.058-0.433-0.028-0.608s-0.776-1.87-1.063-2.565c-0.28-0.672-0.56-0.58-0.776-0.591-0.201-0.010-0.432-0.012-0.662-0.012s-0.604 0.087-0.92 0.433c-0.316 0.346-1.206 1.179-1.206 2.873s1.235 3.333 1.406 3.561c0.174 0.231 2.441 3.732 5.915 5.232 0.826 0.357 1.471 0.571 1.974 0.732 0.829 0.263 1.586 0.226 2.183 0.138 0.666-0.099 2.049-0.837 2.335-1.646 0.289-0.808 0.289-1.501 0.203-1.646s-0.317-0.231-0.663-0.405z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Navbar scroll behavior
+        const navbar = document.querySelector('.navbar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
